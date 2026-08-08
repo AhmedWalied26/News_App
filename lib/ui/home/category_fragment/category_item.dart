@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,8 +43,20 @@ class CategoryItem extends StatelessWidget {
             ),
             Container(
               padding: .directional(
-                start: isEven ? 16.w : 0,
-                end: !isEven ? 16.w : 0,
+                start: context.locale.languageCode == 'en'
+                    ? isEven
+                          ? 16.w
+                          : 0
+                    : !isEven
+                    ? 16.w
+                    : 0,
+                end: context.locale.languageCode == 'ar'
+                    ? isEven
+                          ? 16.w
+                          : 0
+                    : !isEven
+                    ? 16.w
+                    : 0,
               ),
               decoration: BoxDecoration(
                 borderRadius: .circular(84),

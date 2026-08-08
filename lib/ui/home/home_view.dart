@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news_app/api/model/category/category_model.dart';
 import 'package:news_app/ui/home/category_details/category_details.dart';
 import 'package:news_app/ui/home/category_fragment/category_fragment.dart';
+import 'package:news_app/ui/home/drawer/drawer_body.dart';
 import 'package:news_app/utils/app_assets.dart';
 import 'package:news_app/utils/app_colors.dart';
 
@@ -18,7 +19,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: AppColors.blackColor,
+        child: DrawerBody(
+          onTap: () {
+            selectedCategory = null;
+            setState(() {});
+            Navigator.pop(context);
+          },
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           selectedCategory == null ? 'Home' : selectedCategory!.title,
