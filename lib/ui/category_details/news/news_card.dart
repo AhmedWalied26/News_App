@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/api/api_manager.dart';
+import 'package:news_app/api/model/news_response/news_response.dart';
+import 'package:news_app/api/model/source_response/source.dart';
+import 'package:news_app/widgets/main_error.dart';
+import 'package:news_app/widgets/main_waiting.dart';
+
+class NewsCard extends StatefulWidget {
+  final Source source;
+  const NewsCard({super.key, required this.source});
+
+  @override
+  State<NewsCard> createState() => _NewsCardState();
+}
+
+class _NewsCardState extends State<NewsCard> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<NewsResponse>(
+      future: ApiManager.getNewsBySourceId(widget.source.id ?? ''),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return MainWaiting();
+        } else if (snapshot.hasError) {
+          return MainError(
+            onTap: () {
+              ApiManager.getNewsBySourceId(widget.source.id ?? '');
+              setState(() {});
+            },
+          );
+        }
+        var newsList = snapshot.data!.articles;
+        return newsList!.isEmpty
+            ? Center(
+                child: Text(
+                  'No news found',
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              )
+            : ListView.separated(
+                separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                itemCount: newsList.length,
+                itemBuilder: (context, index) {
+                  return Text(
+                    newsList[index].title ?? '',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  );
+                },
+              );
+      },
+    );
+  }
+}
