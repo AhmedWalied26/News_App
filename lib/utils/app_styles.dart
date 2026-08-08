@@ -96,4 +96,14 @@ class AppStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.whiteColor,
   );
+  static TextStyle medium36White = GoogleFonts.inter(
+    fontSize: 38,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+  static TextStyle medium36Black = GoogleFonts.inter(
+    fontSize: 38,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blackColor,
+  );
 }

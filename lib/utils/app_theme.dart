@@ -14,7 +14,7 @@ class AppTheme {
       centerTitle: true,
     ),
     textTheme: TextTheme(
-      headlineSmall: AppStyles.bold24Black,
+      headlineSmall: AppStyles.bold24White,
       headlineMedium: AppStyles.medium24Black,
       headlineLarge: AppStyles.medium20Black,
       titleLarge: AppStyles.bold20Black,
@@ -26,6 +26,7 @@ class AppTheme {
       labelLarge: AppStyles.bold16Black,
       labelMedium: AppStyles.medium14Black,
       labelSmall: AppStyles.medium12Grey,
+      displayLarge: AppStyles.medium36White,
     ),
   );
 
@@ -39,7 +40,7 @@ class AppTheme {
       centerTitle: true,
     ),
     textTheme: TextTheme(
-      headlineSmall: AppStyles.bold24White,
+      headlineSmall: AppStyles.bold24Black,
       headlineMedium: AppStyles.medium24White,
       headlineLarge: AppStyles.medium20White,
       titleLarge: AppStyles.bold20White,
@@ -51,6 +52,7 @@ class AppTheme {
       labelLarge: AppStyles.bold16White,
       labelMedium: AppStyles.medium14White,
       labelSmall: AppStyles.medium12Grey,
+      displayLarge: AppStyles.medium36Black,
     ),
   );
 }

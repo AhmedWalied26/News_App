@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/source_response/source.dart';
-import 'package:news_app/ui/category_details/news/news_card.dart';
+import 'package:news_app/ui/home/category_details/news/news_card.dart';
 import 'package:news_app/utils/app_colors.dart';
 
 class SourceTapbar extends StatefulWidget {

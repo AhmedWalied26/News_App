@@ -33,4 +33,7 @@ class AppAssets {
   static const String languageIcon = 'assets/svg/language_icon.svg';
   static const String searchIcon = 'assets/svg/search_icon.svg';
   static const String themeIcon = 'assets/svg/theme_icon.svg';
+  static const String arrowForwardLightIcon =
+      'assets/svg/arrow_forward_icon.svg';
+  static const String arrowBackLightIcon = 'assets/svg/arrow_back_icon.svg';
 }

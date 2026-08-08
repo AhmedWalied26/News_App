@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:news_app/api/model/category/category_model.dart';
+import 'package:news_app/ui/home/category_details/category_details.dart';
+import 'package:news_app/ui/home/category_fragment/category_fragment.dart';
+import 'package:news_app/utils/app_assets.dart';
+import 'package:news_app/utils/app_colors.dart';
+
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: Drawer(),
+      appBar: AppBar(
+        title: Text(
+          selectedCategory == null ? 'Home' : selectedCategory!.title,
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.only(end: 16.w),
+            child: SvgPicture.asset(
+              AppAssets.searchIcon,
+              colorFilter: ColorFilter.mode(AppColors.blackColor, .srcIn),
+            ),
+          ),
+        ],
+      ),
+
+      body: selectedCategory == null
+          ? CategoryFragment(onCategoryClick: onCatedgoryItemClick)
+          : CategoryDetails(categoryModel: selectedCategory!),
+    );
+  }
+
+  CategoryModel? selectedCategory;
+
+  void onCatedgoryItemClick(CategoryModel newCategory) {
+    selectedCategory = newCategory;
+    setState(() {});
+  }
+}
