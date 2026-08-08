@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/api/model/news_response/news_response.dart';
 import 'package:news_app/api/model/source_response/source.dart';
+import 'package:news_app/ui/category_details/news/widgets/news_card_item.dart';
 import 'package:news_app/widgets/main_error.dart';
 import 'package:news_app/widgets/main_waiting.dart';
 
@@ -39,12 +40,14 @@ class _NewsCardState extends State<NewsCard> {
                 ),
               )
             : ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                separatorBuilder: (context, index) => SizedBox(height: 16.h),
                 itemCount: newsList.length,
                 itemBuilder: (context, index) {
-                  return Text(
-                    newsList[index].title ?? '',
-                    style: Theme.of(context).textTheme.labelLarge,
+                  return NewsCardItem(
+                    image: newsList[index].urlToImage ?? '',
+                    title: newsList[index].title ?? '',
+                    author: newsList[index].author ?? 'Unknown',
+                    publishedAt: newsList[index].publishedAt ?? '',
                   );
                 },
               );
