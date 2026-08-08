@@ -32,6 +32,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Text(
           selectedCategory == null ? 'Home' : selectedCategory!.title,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         actions: [
           Padding(
