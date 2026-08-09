@@ -35,6 +35,7 @@ class AppTheme {
     splashColor: AppColors.whiteColor,
     scaffoldBackgroundColor: AppColors.blackColor,
     appBarTheme: const AppBarTheme(
+      scrolledUnderElevation: 0,
       backgroundColor: AppColors.blackColor,
       iconTheme: IconThemeData(color: AppColors.whiteColor),
       centerTitle: true,
