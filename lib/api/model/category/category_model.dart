@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:news_app/utils/app_assets.dart';
 
 class CategoryModel {
@@ -11,45 +12,45 @@ class CategoryModel {
     return [
       CategoryModel(
         id: 'general',
-        title: 'General',
+        title: 'general'.tr(),
         image: isDark
             ? AppAssets.generalDarkImage
             : AppAssets.generalLightImage,
       ),
       CategoryModel(
         id: 'business',
-        title: 'Business',
+        title: 'business'.tr(),
         image: isDark
             ? AppAssets.businessDarkImage
             : AppAssets.businessLightImage,
       ),
       CategoryModel(
         id: 'sports',
-        title: 'Sports',
+        title: 'sports'.tr(),
         image: isDark ? AppAssets.sportsDarkImage : AppAssets.sportsLightImage,
       ),
       CategoryModel(
         id: 'technology',
-        title: 'Technology',
+        title: 'technology'.tr(),
         image: isDark
             ? AppAssets.technologyDarkImage
             : AppAssets.technologyLightImage,
       ),
       CategoryModel(
         id: 'entertainment',
-        title: 'Entertainment',
+        title: 'entertainment'.tr(),
         image: isDark
             ? AppAssets.entertainmentDarkImage
             : AppAssets.entertainmentLightImage,
       ),
       CategoryModel(
         id: 'health',
-        title: 'Health',
+        title: 'health'.tr(),
         image: isDark ? AppAssets.healthDarkImage : AppAssets.healthLightImage,
       ),
       CategoryModel(
         id: 'science',
-        title: 'Science',
+        title: 'science'.tr(),
         image: isDark
             ? AppAssets.scienceDarkImage
             : AppAssets.scienceLightImage,

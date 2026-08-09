@@ -70,11 +70,11 @@ class DropDownItem extends StatelessWidget {
         dropdownMenuEntries: [
           DropdownMenuEntry(
             value: isDropTheme ? ThemeMode.light : 'en',
-            label: isDropTheme ? 'Light' : 'English',
+            label: isDropTheme ? 'light'.tr() : 'english'.tr(),
           ),
           DropdownMenuEntry(
             value: isDropTheme ? ThemeMode.dark : 'ar',
-            label: isDropTheme ? 'Dark' : 'Arabic',
+            label: isDropTheme ? 'dark'.tr() : 'arabic'.tr(),
           ),
         ],
       ),

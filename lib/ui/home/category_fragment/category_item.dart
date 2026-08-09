@@ -28,6 +28,7 @@ class CategoryItem extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
+          textDirection: .ltr,
           mainAxisAlignment: .spaceEvenly,
           crossAxisAlignment: isEven ? .end : .start,
           children: [
@@ -68,7 +69,7 @@ class CategoryItem extends StatelessWidget {
                 spacing: 10.w,
                 children: [
                   Text(
-                    'View All',
+                    'view_all'.tr(),
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   CircleAvatar(

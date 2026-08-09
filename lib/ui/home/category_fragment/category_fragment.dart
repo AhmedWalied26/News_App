@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/category/category_model.dart';
@@ -24,7 +25,7 @@ class CategoryFragment extends StatelessWidget {
           children: [
             SizedBox(height: 16.h),
             Text(
-              'Good Morning\nHere is Some News For You',
+              'good_morning'.tr(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             ListView.separated(
