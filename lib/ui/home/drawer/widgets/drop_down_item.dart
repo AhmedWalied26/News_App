@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/utils/app_assets.dart';
 import 'package:news_app/utils/app_colors.dart';
 import 'package:news_app/utils/app_styles.dart';
+import 'package:provider/provider.dart';
 
 class DropDownItem extends StatelessWidget {
   final bool isDropTheme;
@@ -11,6 +13,7 @@ class DropDownItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<AppThemeProvider>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: DropdownMenu(
@@ -45,22 +48,32 @@ class DropDownItem extends StatelessWidget {
           ),
         ),
         onSelected: (value) {
-          if (value == 'en') {
-            context.setLocale(Locale('en'));
+          if (isDropTheme) {
+            if (value == ThemeMode.light) {
+              themeProvider.changeTheme(.light);
+            } else {
+              themeProvider.changeTheme(.dark);
+            }
           } else {
-            context.setLocale(Locale('ar'));
+            if (value == 'en') {
+              context.setLocale(Locale('en'));
+            } else {
+              context.setLocale(Locale('ar'));
+            }
           }
         },
         width: .infinity,
         textStyle: AppStyles.bold16White,
-        initialSelection: isDropTheme ? 'light' : context.locale.languageCode,
+        initialSelection: isDropTheme
+            ? themeProvider.appTheme
+            : context.locale.languageCode,
         dropdownMenuEntries: [
           DropdownMenuEntry(
-            value: isDropTheme ? 'light' : 'en',
+            value: isDropTheme ? ThemeMode.light : 'en',
             label: isDropTheme ? 'Light' : 'English',
           ),
           DropdownMenuEntry(
-            value: isDropTheme ? 'dark' : 'ar',
+            value: isDropTheme ? ThemeMode.dark : 'ar',
             label: isDropTheme ? 'Dark' : 'Arabic',
           ),
         ],
