@@ -33,14 +33,15 @@ class ApiManager {
   static Future<NewsResponse> getNewsBySourceId(
     String sourceId,
     String language,
-    // String title,
+    int page,
   ) async {
     try {
       Uri url = Uri.https(ApiConstant.baseUrl, ApiEndpoint.newsApi, {
         'apiKey': ApiConstant.apiKey,
         'sources': sourceId,
         'language': language,
-        // 'searchIn': title,
+        'pageSize': '10',
+        'page': page.toString(),
       });
 
       var response = await http.get(url);
@@ -52,14 +53,20 @@ class ApiManager {
     }
   }
 
-  static Future<NewsResponse> getNewsBySearch(String query) async {
-    Uri url = Uri.https(ApiConstant.baseUrl, ApiEndpoint.newsApi, {
-      'apiKey': ApiConstant.apiKey,
-      'q': query,
-    });
-    var response = await http.get(url);
-    var responseBody = response.body;
-    var json = jsonDecode(responseBody);
-    return NewsResponse.fromJson(json);
+  static Future<NewsResponse> getNewsBySearch(String query, int page) async {
+    try {
+      Uri url = Uri.https(ApiConstant.baseUrl, ApiEndpoint.newsApi, {
+        'apiKey': ApiConstant.apiKey,
+        'q': query,
+        'pageSize': '10',
+        'page': page.toString(),
+      });
+      var response = await http.get(url);
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return NewsResponse.fromJson(json);
+    } catch (e) {
+      rethrow;
+    }
   }
 }

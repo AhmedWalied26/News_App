@@ -26,7 +26,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainWaiting();
-        } else if (snapshot.hasError) {
+        } else if (snapshot.hasError || snapshot.data!.status != 'ok') {
           return MainError(
             onTap: () {
               ApiManager.getSources(

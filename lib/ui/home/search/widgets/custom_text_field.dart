@@ -26,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: true,
       style: Theme.of(context).textTheme.headlineLarge,
       onChanged: onChanged,
       onTapOutside: (event) {
