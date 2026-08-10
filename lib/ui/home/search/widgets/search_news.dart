@@ -30,7 +30,7 @@ class _SearchNewsState extends State<SearchNews> {
       future: ApiManager.getNewsBySearch(widget.searchText, currentPage),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return MainWaiting();
+          return Expanded(child: MainWaiting());
         } else if (snapshot.hasError) {
           return MainError(
             onTap: () {
@@ -41,10 +41,12 @@ class _SearchNewsState extends State<SearchNews> {
         }
         var newsList = snapshot.data?.articles ?? [];
         return newsList.isEmpty
-            ? Center(
-                child: Text(
-                  'no_news_matching_found'.tr(),
-                  style: Theme.of(context).textTheme.labelLarge,
+            ? Expanded(
+                child: Center(
+                  child: Text(
+                    'no_news_matching_found'.tr(),
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               )
             : Expanded(
