@@ -37,6 +37,7 @@ class NewsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {AppRoutes.homeRouteName: (context) => HomeView()},
         initialRoute: AppRoutes.homeRouteName,
+
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
