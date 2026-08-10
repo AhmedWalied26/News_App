@@ -38,7 +38,7 @@ class CategoryItem extends StatelessWidget {
                 end: isEven ? 12.w : 0,
               ),
               child: Text(
-                capitalize(categoryModel.title),
+                capitalize(categoryModel.title.tr()),
                 style: Theme.of(context).textTheme.displayLarge,
               ),
             ),

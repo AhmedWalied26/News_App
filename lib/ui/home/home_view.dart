@@ -40,7 +40,10 @@ class _HomeViewState extends State<HomeView> {
             padding: EdgeInsetsDirectional.only(end: 16.w),
             child: SvgPicture.asset(
               AppAssets.searchIcon,
-              colorFilter: ColorFilter.mode(AppColors.blackColor, .srcIn),
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).splashColor,
+                .srcIn,
+              ),
             ),
           ),
         ],
