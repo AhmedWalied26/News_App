@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       appBar: AppBar(
         title: Text(
-          selectedCategory == null ? 'home'.tr() : selectedCategory!.title,
+          selectedCategory == null ? 'home'.tr() : selectedCategory!.title.tr(),
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         actions: [

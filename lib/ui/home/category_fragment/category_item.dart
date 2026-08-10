@@ -38,7 +38,7 @@ class CategoryItem extends StatelessWidget {
                 end: isEven ? 12.w : 0,
               ),
               child: Text(
-                categoryModel.title,
+                capitalize(categoryModel.title),
                 style: Theme.of(context).textTheme.displayLarge,
               ),
             ),
@@ -94,5 +94,9 @@ class CategoryItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String capitalize(String text) {
+    return text[0].toUpperCase() + text.substring(1);
   }
 }

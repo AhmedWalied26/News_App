@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/api/model/category/category_model.dart';
@@ -18,14 +19,20 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse>(
-      future: ApiManager.getSources(widget.categoryModel.id),
+      future: ApiManager.getSources(
+        widget.categoryModel.id,
+        context.locale.languageCode,
+      ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainWaiting();
         } else if (snapshot.hasError) {
           return MainError(
             onTap: () {
-              ApiManager.getSources(widget.categoryModel.id);
+              ApiManager.getSources(
+                widget.categoryModel.id,
+                context.locale.languageCode,
+              );
               setState(() {});
             },
           );

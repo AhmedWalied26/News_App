@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/api_manager.dart';
@@ -19,14 +20,20 @@ class _NewsCardState extends State<NewsCard> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponse>(
-      future: ApiManager.getNewsBySourceId(widget.source.id ?? ''),
+      future: ApiManager.getNewsBySourceId(
+        widget.source.id ?? '',
+        context.locale.languageCode,
+      ),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainWaiting();
         } else if (snapshot.hasError) {
           return MainError(
             onTap: () {
-              ApiManager.getNewsBySourceId(widget.source.id ?? '');
+              ApiManager.getNewsBySourceId(
+                widget.source.id ?? '',
+                context.locale.languageCode,
+              );
               setState(() {});
             },
           );
