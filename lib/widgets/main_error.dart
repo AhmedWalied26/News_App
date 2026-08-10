@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainError extends StatelessWidget {
   final VoidCallback onTap;
@@ -8,17 +10,22 @@ class MainError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        spacing: 8.h,
         mainAxisAlignment: .center,
         children: [
           Text(
-            'Something went wrong',
-            style: Theme.of(context).textTheme.labelMedium,
+            'something_went_wrong'.tr(),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).splashColor,
+              shape: RoundedRectangleBorder(borderRadius: .circular(8)),
+            ),
             onPressed: onTap,
             child: Text(
-              'Try again',
-              style: Theme.of(context).textTheme.labelMedium,
+              'try_again'.tr(),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
         ],

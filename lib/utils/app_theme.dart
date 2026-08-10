@@ -27,6 +27,7 @@ class AppTheme {
       labelMedium: AppStyles.medium14Black,
       labelSmall: AppStyles.medium12Grey,
       displayLarge: AppStyles.medium36White,
+      displayMedium: AppStyles.medium20White,
     ),
   );
 
@@ -54,6 +55,7 @@ class AppTheme {
       labelMedium: AppStyles.medium14White,
       labelSmall: AppStyles.medium12Grey,
       displayLarge: AppStyles.medium36Black,
+      displayMedium: AppStyles.medium20Black,
     ),
   );
 }

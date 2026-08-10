@@ -18,5 +18,7 @@
   "home": "الرئيسية",
   "view_full_articel": "عرض المقال كاملًا",
   "search": "بحث",
-  "good_morning": "صباح الخير\nإليك بعض الأخبار لك"
+  "good_morning": "صباح الخير\nإليك بعض الأخبار لك",
+  "something_went_wrong": "حدث خطأ ما",
+  "try_again": "حاول مرة أخرى"
 }

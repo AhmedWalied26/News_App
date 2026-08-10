@@ -17,6 +17,7 @@ class DropDownItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: DropdownMenu(
+        key: ValueKey(context.locale.languageCode),
         trailingIcon: SvgPicture.asset(AppAssets.dropDownIcon),
         selectedTrailingIcon: SvgPicture.asset(AppAssets.dropDownIcon),
         inputDecorationTheme: InputDecorationTheme(
