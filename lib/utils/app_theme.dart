@@ -19,7 +19,7 @@ class AppTheme {
       headlineLarge: AppStyles.medium20Black,
       titleLarge: AppStyles.bold20Black,
       titleMedium: AppStyles.medium20Black,
-      titleSmall: AppStyles.medium14Black,
+      titleSmall: AppStyles.medium14White,
       bodyLarge: AppStyles.medium14Black,
       bodyMedium: AppStyles.medium12Black,
       bodySmall: AppStyles.medium12Grey,
@@ -28,6 +28,7 @@ class AppTheme {
       labelSmall: AppStyles.medium12Grey,
       displayLarge: AppStyles.medium36White,
       displayMedium: AppStyles.medium20White,
+      displaySmall: AppStyles.bold16Black,
     ),
   );
 
@@ -47,7 +48,7 @@ class AppTheme {
       headlineLarge: AppStyles.medium20White,
       titleLarge: AppStyles.bold20White,
       titleMedium: AppStyles.medium20White,
-      titleSmall: AppStyles.medium14White,
+      titleSmall: AppStyles.medium14Black,
       bodyLarge: AppStyles.medium14White,
       bodyMedium: AppStyles.medium12White,
       bodySmall: AppStyles.medium12Grey,
@@ -56,6 +57,7 @@ class AppTheme {
       labelSmall: AppStyles.medium12Grey,
       displayLarge: AppStyles.medium36Black,
       displayMedium: AppStyles.medium20Black,
+      displaySmall: AppStyles.bold16White,
     ),
   );
 }

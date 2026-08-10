@@ -24,7 +24,7 @@ class NewsCardItem extends StatelessWidget {
       padding: .all(8.w),
       decoration: BoxDecoration(
         borderRadius: .circular(16),
-        border: .all(color: Theme.of(context).splashColor),
+        border: .all(color: Theme.of(context).splashColor, width: 1.5),
       ),
       child: Column(
         spacing: 10.h,
@@ -33,8 +33,11 @@ class NewsCardItem extends StatelessWidget {
           ClipRRect(
             borderRadius: .circular(8),
             child: CachedNetworkImage(
+              height: 220.h,
+              fit: .fill,
               placeholder: (context, url) => MainWaiting(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) =>
+                  Center(child: Icon(Icons.error)),
               imageUrl: image,
             ),
           ),
