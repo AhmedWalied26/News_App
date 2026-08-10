@@ -1,0 +1,81 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/api/api_manager.dart';
+import 'package:news_app/api/model/news_response/article.dart';
+import 'package:news_app/api/model/news_response/news_response.dart';
+import 'package:news_app/ui/home/category_details/news/news_details/news_details.dart';
+import 'package:news_app/ui/home/category_details/news/widgets/news_card_item.dart';
+import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/widgets/main_error.dart';
+import 'package:news_app/widgets/main_waiting.dart';
+
+class SearchNews extends StatefulWidget {
+  final String searchText;
+  const SearchNews({super.key, required this.searchText});
+
+  @override
+  State<SearchNews> createState() => _SearchNewsState();
+}
+
+class _SearchNewsState extends State<SearchNews> {
+  @override
+  Widget build(BuildContext context) {
+    if (widget.searchText.isEmpty) {
+      return SizedBox();
+    }
+    return FutureBuilder<NewsResponse>(
+      future: ApiManager.getNewsBySearch(widget.searchText),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return MainWaiting();
+        } else if (snapshot.hasError) {
+          return MainError(
+            onTap: () {
+              ApiManager.getNewsBySearch(widget.searchText);
+              setState(() {});
+            },
+          );
+        }
+        var newsList = snapshot.data!.articles;
+        return newsList!.isEmpty
+            ? Center(
+                child: Text(
+                  'no_news_found'.tr(),
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              )
+            : Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(height: 16.h),
+                  itemCount: newsList.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      overlayColor: WidgetStatePropertyAll(
+                        AppColors.transparentColor,
+                      ),
+                      onTap: () {
+                        showBottomSheet(context, newsList[index]);
+                      },
+                      child: NewsCardItem(
+                        image: newsList[index].urlToImage ?? '',
+                        title: newsList[index].title ?? '',
+                        author: newsList[index].author ?? 'Unknown',
+                        publishedAt: newsList[index].publishedAt ?? '',
+                      ),
+                    );
+                  },
+                ),
+              );
+      },
+    );
+  }
+
+  void showBottomSheet(BuildContext context, Article article) {
+    showModalBottomSheet(
+      backgroundColor: AppColors.transparentColor,
+      context: context,
+      builder: (context) => NewsDetails(article: article),
+    );
+  }
+}
