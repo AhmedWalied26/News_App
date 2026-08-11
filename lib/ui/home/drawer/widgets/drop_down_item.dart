@@ -62,6 +62,7 @@ class DropDownItem extends StatelessWidget {
               context.setLocale(Locale('ar'));
             }
           }
+          Navigator.pop(context);
         },
         width: .infinity,
         textStyle: AppStyles.bold16White,

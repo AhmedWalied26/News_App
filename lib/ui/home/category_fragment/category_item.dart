@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/api/model/category/category_model.dart';
+import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/utils/app_assets.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:provider/provider.dart';
 
 class CategoryItem extends StatelessWidget {
   final CategoryModel categoryModel;
@@ -17,13 +19,20 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<AppThemeProvider>(context);
     bool isEven = index % 2 == 0;
     return Container(
       height: 198.h,
       width: .infinity,
       decoration: BoxDecoration(
         borderRadius: .circular(24),
-        image: DecorationImage(image: AssetImage(categoryModel.image)),
+        image: DecorationImage(
+          image: AssetImage(
+            themeProvider.appTheme == .dark
+                ? categoryModel.darkImage
+                : categoryModel.lightImage,
+          ),
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),

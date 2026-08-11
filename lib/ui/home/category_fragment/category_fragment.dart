@@ -2,10 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/category/category_model.dart';
-import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/ui/home/category_fragment/category_item.dart';
 import 'package:news_app/utils/app_colors.dart';
-import 'package:provider/provider.dart';
 
 class CategoryFragment extends StatelessWidget {
   final Function onCategoryClick;
@@ -13,10 +11,7 @@ class CategoryFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themeProvider = Provider.of<AppThemeProvider>(context);
-    var categoryList = CategoryModel.getCategoryList(
-      isDark: themeProvider.appTheme == .dark,
-    );
+    var categoryList = CategoryModel.getCategoryList();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: SingleChildScrollView(
