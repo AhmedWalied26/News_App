@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/news_response/article.dart';
 import 'package:news_app/ui/home/category_details/news/news_details/widgets/custom_button.dart';
+import 'package:news_app/ui/home/category_details/news/news_details/widgets/news_web_view.dart';
 import 'package:news_app/widgets/main_waiting.dart';
 
 class NewsDetails extends StatelessWidget {
@@ -40,7 +41,19 @@ class NewsDetails extends StatelessWidget {
                 context,
               ).textTheme.titleSmall!.copyWith(height: 1.6, letterSpacing: 1),
             ),
-            CustomButton(),
+            CustomButton(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return NewsWebView(url: article.url!);
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -24,6 +24,7 @@ class DrawerBody extends StatelessWidget {
         ),
         SizedBox(height: 16.h),
         InkWell(
+          overlayColor: WidgetStatePropertyAll(AppColors.transparentColor),
           onTap: onTap,
           child: DrawerItem(
             imageIcon: AppAssets.homeIcon,

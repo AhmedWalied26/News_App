@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/category/category_model.dart';
 import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/ui/home/category_fragment/category_item.dart';
+import 'package:news_app/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class CategoryFragment extends StatelessWidget {
@@ -33,6 +34,9 @@ class CategoryFragment extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return InkWell(
+                  overlayColor: WidgetStatePropertyAll(
+                    AppColors.transparentColor,
+                  ),
                   onTap: () {
                     onCategoryClick(categoryList[index]);
                   },

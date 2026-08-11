@@ -13,6 +13,7 @@ import 'package:news_app/widgets/main_waiting.dart';
 
 class SearchNews extends StatefulWidget {
   final String searchText;
+
   const SearchNews({super.key, required this.searchText});
 
   @override

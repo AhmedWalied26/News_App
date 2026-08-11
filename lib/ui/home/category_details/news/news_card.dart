@@ -14,6 +14,7 @@ import 'package:news_app/widgets/main_waiting.dart';
 
 class NewsCard extends StatefulWidget {
   final Source source;
+
   const NewsCard({super.key, required this.source});
 
   @override

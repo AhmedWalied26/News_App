@@ -10,6 +10,7 @@ class SearchBody extends StatelessWidget {
   final VoidCallback onCancelClick;
   final Function onChanged;
   final String searchText;
+
   const SearchBody({
     super.key,
     required this.onCancelClick,

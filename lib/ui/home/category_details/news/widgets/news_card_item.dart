@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/utils/app_styles.dart';
-import 'package:news_app/widgets/main_waiting.dart';
 
 class NewsCardItem extends StatelessWidget {
   final String image;
@@ -35,7 +34,11 @@ class NewsCardItem extends StatelessWidget {
             child: CachedNetworkImage(
               height: 220.h,
               fit: .fill,
-              placeholder: (context, url) => MainWaiting(),
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).splashColor,
+                ),
+              ),
               errorWidget: (context, url, error) =>
                   Center(child: Icon(Icons.error)),
               imageUrl: image,

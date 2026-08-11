@@ -9,6 +9,7 @@ import 'package:news_app/widgets/main_waiting.dart';
 
 class CategoryDetails extends StatefulWidget {
   final CategoryModel categoryModel;
+
   const CategoryDetails({super.key, required this.categoryModel});
 
   @override

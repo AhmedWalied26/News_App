@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  final VoidCallback onTap;
+  const CustomButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class CustomButton extends StatelessWidget {
         padding: .symmetric(vertical: 16.h),
         shape: RoundedRectangleBorder(borderRadius: .circular(16)),
       ),
-      onPressed: () {},
+      onPressed: onTap,
       child: Text(
         'view_full_articel'.tr(),
         style: Theme.of(context).textTheme.displaySmall,
