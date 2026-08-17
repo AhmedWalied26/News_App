@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/api/model/category/category_model.dart';
 import 'package:news_app/ui/home/category_details/category_details.dart';
@@ -9,6 +8,7 @@ import 'package:news_app/ui/home/drawer/drawer_body.dart';
 import 'package:news_app/ui/home/search/search_body.dart';
 import 'package:news_app/utils/app_assets.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -22,6 +22,7 @@ class _HomeViewState extends State<HomeView> {
   bool isSearch = false;
   @override
   Widget build(BuildContext context) {
+    var width = context.width;
     return Scaffold(
       drawer: Drawer(
         backgroundColor: AppColors.blackColor,
@@ -44,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsetsDirectional.only(end: 16.w),
+                  padding: EdgeInsetsDirectional.only(end: width * 0.035),
                   child: InkWell(
                     onTap: () {
                       setState(() {

@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/category/category_model.dart';
 import 'package:news_app/ui/home/category_fragment/category_item.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class CategoryFragment extends StatelessWidget {
   final Function onCategoryClick;
@@ -11,15 +11,17 @@ class CategoryFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     var categoryList = CategoryModel.getCategoryList();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: width * 0.035),
       child: SingleChildScrollView(
         child: Column(
-          spacing: 8.h,
+          spacing: height * 0.016,
           crossAxisAlignment: .start,
           children: [
-            SizedBox(height: 16.h),
+            SizedBox(height: height * 0.008),
             Text(
               'good_morning'.tr(),
               style: Theme.of(context).textTheme.headlineMedium,
@@ -41,7 +43,8 @@ class CategoryFragment extends StatelessWidget {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => SizedBox(height: 16.h),
+              separatorBuilder: (context, index) =>
+                  SizedBox(height: height * 0.016),
               itemCount: categoryList.length,
             ),
           ],

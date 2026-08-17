@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/utils/app_styles.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class DrawerItem extends StatelessWidget {
   final String imageIcon;
@@ -10,10 +10,11 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = context.width;
     return Padding(
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+      padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.035),
       child: Row(
-        spacing: 6.w,
+        spacing: width * 0.015,
         children: [
           SvgPicture.asset(imageIcon),
           Text(title, style: AppStyles.bold20White),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -10,9 +10,11 @@ class MainWaiting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return ListView.separated(
-      separatorBuilder: (context, index) => SizedBox(height: 16.h),
+      separatorBuilder: (context, index) => SizedBox(height: height * 0.016),
       itemCount: 10,
       itemBuilder: (context, index) {
         return Shimmer.fromColors(
@@ -23,43 +25,43 @@ class MainWaiting extends StatelessWidget {
               ? Colors.grey.shade700
               : Colors.grey.shade300,
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.w),
-            padding: EdgeInsets.all(8.w),
+            margin: EdgeInsets.symmetric(horizontal: width * 0.035),
+            padding: EdgeInsets.all(width * 0.016),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
             child: Column(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Container(
-                    height: 220.h,
+                    height: height * 0.22,
                     width: double.infinity,
                     color: AppColors.whiteColor,
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: height * 0.01),
                 Container(
-                  height: 18.h,
+                  height: height * 0.018,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: height * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 14.h,
-                      width: 100.w,
+                      height: height * 0.014,
+                      width: width * 0.2545,
                       decoration: BoxDecoration(
                         color: AppColors.whiteColor,
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
                     Container(
-                      height: 14.h,
-                      width: 80.w,
+                      height: height * 0.014,
+                      width: width * 0.2036,
                       decoration: BoxDecoration(
                         color: AppColors.whiteColor,
                         borderRadius: BorderRadius.circular(4),

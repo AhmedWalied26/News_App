@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class PageItem extends StatelessWidget {
   final int page;
@@ -14,11 +14,17 @@ class PageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     return InkWell(
       onTap: onTap,
       child: Container(
+        margin: .only(bottom: height * 0.008),
         alignment: .center,
-        padding: .symmetric(vertical: 4.h, horizontal: isSelected ? 10.w : 8.w),
+        padding: .symmetric(
+          vertical: height * 0.004,
+          horizontal: isSelected ? width * 0.025 : width * 0.016,
+        ),
         decoration: BoxDecoration(
           borderRadius: .circular(8),
           border: isSelected

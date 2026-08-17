@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/utils/app_styles.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class NewsCardItem extends StatelessWidget {
   final String image;
@@ -18,21 +18,24 @@ class NewsCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     return Container(
-      margin: .symmetric(horizontal: 16.w),
-      padding: .all(8.w),
+      margin: .symmetric(horizontal: width * 0.035),
+      padding: .all(width * 0.016),
       decoration: BoxDecoration(
         borderRadius: .circular(16),
         border: .all(color: Theme.of(context).splashColor, width: 1.5),
       ),
       child: Column(
-        spacing: 10.h,
+        spacing: height * 0.01,
         crossAxisAlignment: .start,
         children: [
           ClipRRect(
             borderRadius: .circular(8),
             child: CachedNetworkImage(
-              height: 220.h,
+              height: height * 0.22,
+              width: .infinity,
               fit: .fill,
               placeholder: (context, url) => Center(
                 child: CircularProgressIndicator(

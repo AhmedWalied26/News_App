@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/api/model/news_response/article.dart';
 import 'package:news_app/api/model/news_response/news_response.dart';
@@ -9,6 +8,7 @@ import 'package:news_app/ui/home/category_details/news/news_details/news_details
 import 'package:news_app/ui/home/category_details/news/widgets/news_card_item.dart';
 import 'package:news_app/ui/home/category_details/news/widgets/page_item.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 import 'package:news_app/widgets/main_error.dart';
 import 'package:news_app/widgets/main_waiting.dart';
 
@@ -25,6 +25,8 @@ class _NewsCardState extends State<NewsCard> {
   int currentPage = 1;
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     return FutureBuilder<NewsResponse>(
       future: ApiManager.getNewsBySourceId(
         widget.source.id ?? '',
@@ -55,12 +57,13 @@ class _NewsCardState extends State<NewsCard> {
                 ),
               )
             : ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(height: 16.h),
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: height * 0.016),
                 itemCount: newsList.length + 1,
                 itemBuilder: (context, index) {
                   if (index == newsList.length) {
                     return Row(
-                      spacing: 6.w,
+                      spacing: width * 0.015,
                       mainAxisAlignment: .center,
                       children: [
                         PageItem(

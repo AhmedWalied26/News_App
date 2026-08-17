@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/api/model/category/category_model.dart';
 import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/utils/app_assets.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 import 'package:provider/provider.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -19,14 +19,17 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
+    var width = context.width;
     var themeProvider = Provider.of<AppThemeProvider>(context);
     bool isEven = index % 2 == 0;
     return Container(
-      height: 198.h,
+      height: height * 0.22,
       width: .infinity,
       decoration: BoxDecoration(
         borderRadius: .circular(24),
         image: DecorationImage(
+          fit: .cover,
           image: AssetImage(
             themeProvider.appTheme == .dark
                 ? categoryModel.darkImage
@@ -35,7 +38,7 @@ class CategoryItem extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.035),
         child: Column(
           textDirection: .ltr,
           mainAxisAlignment: .spaceEvenly,
@@ -43,8 +46,8 @@ class CategoryItem extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsetsDirectional.only(
-                start: !isEven ? 12.w : 0,
-                end: isEven ? 12.w : 0,
+                start: !isEven ? width * 0.03 : 0,
+                end: isEven ? width * 0.03 : 0,
               ),
               child: Text(
                 capitalize(categoryModel.title.tr()),
@@ -55,17 +58,17 @@ class CategoryItem extends StatelessWidget {
               padding: .directional(
                 start: context.locale.languageCode == 'en'
                     ? isEven
-                          ? 16.w
+                          ? width * 0.035
                           : 0
                     : !isEven
-                    ? 16.w
+                    ? width * 0.035
                     : 0,
                 end: context.locale.languageCode == 'ar'
                     ? isEven
-                          ? 16.w
+                          ? width * 0.035
                           : 0
                     : !isEven
-                    ? 16.w
+                    ? width * 0.035
                     : 0,
               ),
               decoration: BoxDecoration(
@@ -75,7 +78,7 @@ class CategoryItem extends StatelessWidget {
               child: Row(
                 textDirection: isEven ? .ltr : .rtl,
                 mainAxisSize: .min,
-                spacing: 10.w,
+                spacing: width * 0.025,
                 children: [
                   Text(
                     'view_all'.tr(),
@@ -88,8 +91,8 @@ class CategoryItem extends StatelessWidget {
                       isEven
                           ? AppAssets.arrowForwardLightIcon
                           : AppAssets.arrowBackLightIcon,
-                      width: 28.w,
-                      height: 28.h,
+                      width: width * 0.07,
+                      height: height * 0.028,
                       colorFilter: ColorFilter.mode(
                         Theme.of(context).splashColor,
                         .srcIn,

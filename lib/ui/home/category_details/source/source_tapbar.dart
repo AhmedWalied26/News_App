@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/model/source_response/source.dart';
 import 'package:news_app/ui/home/category_details/news/news_card.dart';
 import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class SourceTapbar extends StatefulWidget {
   final List<Source> sourceList;
@@ -18,11 +18,12 @@ class _SourceTapbarState extends State<SourceTapbar> {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
     return DefaultTabController(
       length: widget.sourceList.length,
       child: Column(
         children: [
-          SizedBox(height: 20.h),
+          SizedBox(height: height * 0.02),
           TabBar(
             onTap: (index) {
               selectedIndex = index;
@@ -39,7 +40,7 @@ class _SourceTapbarState extends State<SourceTapbar> {
               return Text(source.name ?? '');
             }).toList(),
           ),
-          SizedBox(height: 32.h),
+          SizedBox(height: height * 0.032),
           Expanded(
             child: TabBarView(
               children: widget.sourceList.map((source) {

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/utils/size_utils.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -8,10 +8,11 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
-        padding: .symmetric(vertical: 16.h),
+        padding: .symmetric(vertical: height * 0.016),
         shape: RoundedRectangleBorder(borderRadius: .circular(16)),
       ),
       onPressed: onTap,
