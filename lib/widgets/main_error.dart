@@ -11,7 +11,7 @@ class MainError extends StatelessWidget {
     var height = context.height;
     return Center(
       child: Column(
-        spacing: height * 0.08,
+        spacing: height * 0.008,
         mainAxisAlignment: .center,
         children: [
           Text(
